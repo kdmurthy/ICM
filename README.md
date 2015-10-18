@@ -1,2 +1,2 @@
-# icm
+# ICM
 Internet Connectivity Monitor
