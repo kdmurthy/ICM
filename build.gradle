@@ -1,0 +1,23 @@
+apply plugin: 'application'
+
+mainClassName = 'com.jaliansystems.icm.Main'
+
+repositories {
+    mavenCentral()
+}
+
+jar.doFirst {
+    // Keep jar clean:
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.MF'
+
+    manifest {
+        attributes 'Main-Class': 'com.jaliansystems.icm.Main',
+                   'Class-Path': configurations.runtime.files.collect { "$it.name" }.join(' ')
+    }
+}
+
+dependencies {
+    compile group: 'com.jgoodies', name: 'jgoodies-forms', version: '1.8.0'
+    compile group: 'org.jfree', name: 'jfreechart', version: '1.0.19'
+    testCompile group: 'junit', name: 'junit', version: '3.8.1'
+}
